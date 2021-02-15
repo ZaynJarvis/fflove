@@ -1,0 +1,109 @@
+$themeColor: #ddda;
+
+:root {
+  --swiper-theme-color: #{$themeColor};
+  --logo-color: #{$themeColor};
+  --user-color: #{$themeColor}; 
+  --footer-color: #{$themeColor};
+  --text-color: whitesmoke;
+}
+
+.swiper {
+  height: 100vh;
+  position: relative;
+  .overlay {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30vh;
+    align-items: center;
+    color: var(--text-color);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.7rem;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #3338;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    h5 {
+      margin: 0;
+    }
+    p {
+      margin: 0.5rem;
+      font-size: 1.2rem;
+      color: var(--text-color);
+    }
+    .logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .twitter, .ff {
+        margin: 1rem;
+        fill: var(--logo-color);
+        color: var(--logo-color);
+        stroke: var(--logo-color);
+        height: 2rem;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.slide {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+article {
+  padding: 2rem;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: auto;
+  .comment p {
+    margin: 0.3rem 0;
+    span {
+      color: var(--swiper-theme-color);
+    }
+  }
+  input {
+    width: 50%;
+    padding: 0.4rem;
+    border-radius: 4px;
+    border: none;
+    background: #333;
+    color: var(--text-color);
+    &[type='submit'] {
+      align-self: flex-end;
+      margin: 0.4rem 0;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  textarea{
+    width: 100%;
+    padding: 0.4rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    background: #333;
+    color: var(--text-color);
+    resize: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+footer {
+  font-size: 0.6rem;
+  color: var(--footer-color);
+  text-align: center;
+  margin: 1rem;
+}
