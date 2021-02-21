@@ -14,9 +14,7 @@ function App() {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     db.collection("comment").add({ ...data, time: Date.now() })
-      .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-      })
+      .then((docRef) => { })
       .catch((error) => {
         console.error("Error adding document: ", error);
       });
@@ -25,14 +23,15 @@ function App() {
   }
 
   const getFromStore = () => {
-    db.collection("comment").limit(10).orderBy("time", "asc").get().then((querySnapshot) => {
+    db.collection("comment").orderBy("time", "desc").limit(10).get().then((querySnapshot) => {
       let cs = []
       querySnapshot.forEach((doc) => {
         if (doc.data().name && doc.data().comment) {
           cs = [...cs, { ...doc.data(), id: doc.id, time: Date.now() }]
         }
-        loadComments(cs)
       });
+      cs.reverse()
+      loadComments(cs)
     });
   }
   const [comments, loadComments] = React.useState([])
