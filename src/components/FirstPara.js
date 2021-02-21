@@ -4,7 +4,6 @@ import { RichText } from 'prismic-reactjs';
 const FirstParagraph = ({ sliceZone, textLimit = 300 }) => {
     const firstTextSlice = sliceZone.find(slice => slice.slice_type === 'text');
 
-    console.log(firstTextSlice)
     if (firstTextSlice) {
         const text = RichText.asText(firstTextSlice.primary.text);
         let limitedText = text.substring(0, textLimit);

@@ -65,15 +65,18 @@ a {
 article {
   padding: 2rem;
   color: var(--text-color);
-  display: flex;
-  flex-direction: column;
   max-width: 1000px;
   margin: auto;
   .comment p {
     margin: 0.3rem 0;
+    line-height: 1.8rem;
     span {
       color: var(--swiper-theme-color);
     }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
   }
   input {
     width: 50%;

@@ -15,7 +15,6 @@ function App() {
       )
       if (response) {
         setPostData(response.results)
-        console.log(response.results)
       }
     }
     fetchData()
