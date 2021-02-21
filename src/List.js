@@ -1,24 +1,43 @@
+import React from "react";
+import Client from "./prismic/client";
+import { Link } from 'react-router-dom';
+import { RichText } from 'prismic-reactjs'
+import FirstParagraph from "./components/FirstPara";
+import Prismic from '@prismicio/client'
+
 function App() {
-  const articles = [
-    {
-      id: 1,
-      title: '法拉利未来',
-      short: 'iPROM je s svojimi programskimi rešitvami za distribucijo oglasnih sporočil v preteklem letu slovenskim uporabnikom digitalnih medijev prikazal 49,6 odstotka več oglasov kot v letu 2019.',
-    },
-    {
-      id: 2,
-      title: 'SPAC in PSAC',
-      short: 'Po številu prikazanih oglasov med panogami ponovno prednjači trgovina, največje povečanje deleža prikazanih oglasov pa je bila deležna panoga zdravje.',
+  const [posts, setPostData] = React.useState(null)
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const response = await Client.query(
+        Prismic.Predicates.at('document.type', 'post')
+      )
+      if (response) {
+        setPostData(response.results)
+        console.log(response.results)
+      }
     }
-  ]
+    fetchData()
+  }, [])
+
+  function linkResolver(doc) {
+    if (doc.type === 'post') return `/posts/${doc.id}`
+    return '/'
+  }
   return (
     <article>
       <h2 style={{ textAlign: 'center' }}>最新消息</h2>
-      {articles.map(a => (<div key={a.id} style={{ borderBottom: 'whitesmoke 1px solid' }}>
-        <h4>{a.title}</h4>
-        <p>{a.short}</p>
+      {posts ? posts.map(doc => (<div key={doc.id} style={{ borderBottom: 'whitesmoke 1px solid' }}>
+        <Link to={linkResolver(doc)}>
+          <h4>{RichText.asText(doc.data.title)}</h4>
+        </Link>
+        <FirstParagraph
+          sliceZone={doc.data.body}
+          textLimit={300}
+        />
       </div>)
-      )}
+      ) : <></>}
     </article>
   );
 }

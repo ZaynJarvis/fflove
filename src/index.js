@@ -2,11 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Post from './Post';
 import reportWebVitals from './reportWebVitals';
+import NotFound from "./NotFound";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route exact path='/' component={App} />
+        <Route exact path='/posts/:id' component={Post} />
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

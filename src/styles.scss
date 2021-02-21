@@ -8,6 +8,10 @@ $themeColor: #ddda;
   --text-color: whitesmoke;
 }
 
+a {
+  color: whitesmoke;
+}
+
 .swiper {
   height: 90vh;
   position: relative;
@@ -101,9 +105,20 @@ article {
   }
 }
 
+.main {
+  color: whitesmoke;
+  width: 80vw;
+  margin: auto;
+  p {
+    line-height: 2;
+    color: rgb(184, 184, 184);
+  }
+}
+
 footer {
   font-size: 0.6rem;
   color: var(--footer-color);
   text-align: center;
-  margin: 1rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }

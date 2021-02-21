@@ -11,7 +11,7 @@ function App() {
       comment: 'Nice future worth a shot',
     },
     {
-      id: 2,
+      id: 3,
       name: 'Ninja',
       comment: 'Looks good, can compete with Tesla',
     },
